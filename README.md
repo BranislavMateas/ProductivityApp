@@ -3,4 +3,4 @@
 I had some problems with that, but I've finally decided that I want to work with To do lists, not just the paper ones. 
 
 ### Why not to join it with learning React.js? 
-### Sounds like a challenge! 
+## Sounds like a challenge! 
