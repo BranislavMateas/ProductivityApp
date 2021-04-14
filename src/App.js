@@ -1,13 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import TodoList from "./TodoList";
 
 function App() {
-  const [todosList, setTodos] = useState(["Todo číslo 1", "Todo číslo 2"]); // useState vracia array(2) - object destructuring - jedna polozka aktuálny stav, druhá bude pre funkciu, ktorá tento stav updatuje
+  const [todosList, setTodos] = useState([]); // useState vracia array(2) - object destructuring - jedna polozka aktuálny stav, druhá bude pre funkciu, ktorá tento stav updatuje
+  const todoContains = useRef()
+
+  function handleAddTodo(e){
+    const todoName = todoContains.current.value;
+    if (todoName === "") return ;
+    setTodos(prevTodos => {
+      return [...prevTodos, {id: 1, name: todoName, complete: true}]
+    })
+    todoContains.current.value = null;
+  }
+
   return (
     <>
       <TodoList todos={todosList} /> 
-      <input type="text"></input>
-      <button>Add todo</button>
+      <input ref={todoContains} type="text"></input>
+      <button onClick={handleAddTodo}>Add todo</button>
       <button>Clear completed to do-s</button>
       <div>0 left to do</div>
     </>
