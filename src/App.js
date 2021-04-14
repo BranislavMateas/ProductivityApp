@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import TodoList from "./TodoList";
+import {v4 as uuidv4} from 'uuid';
 
 function App() {
   const [todosList, setTodos] = useState([]); // useState vracia array(2) - object destructuring - jedna polozka aktuálny stav, druhá bude pre funkciu, ktorá tento stav updatuje
@@ -9,7 +10,7 @@ function App() {
     const todoName = todoContains.current.value;
     if (todoName === "") return ;
     setTodos(prevTodos => {
-      return [...prevTodos, {id: 1, name: todoName, complete: true}]
+      return [...prevTodos, {id: uuidv4(), name: todoName, complete: true}]
     })
     todoContains.current.value = null;
   }
