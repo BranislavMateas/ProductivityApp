@@ -28,7 +28,7 @@ function App() {
     const todoName = todoContains.current.value;
     if (todoName === "") return ;
     setTodos(prevTodos => {
-      return [...prevTodos, {id: uuidv4(), name: todoName, complete: true}]
+      return [...prevTodos, {id: uuidv4(), name: todoName, complete: false}]
     })
     todoContains.current.value = null;
   }
@@ -39,7 +39,7 @@ function App() {
       <input ref={todoContains} type="text"></input>
       <button onClick={handleAddTodo}>Add todo</button>
       <button>Clear completed to do-s</button>
-      <div>0 left to do</div>
+      <div>{todosList.filter(exactTodo => !exactTodo.complete).length} left to do</div>
     </>
   );
 }
