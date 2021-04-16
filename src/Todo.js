@@ -5,7 +5,6 @@ export default function Todo({exactTodo, toggleTodo}) {
         toggleTodo(exactTodo.id)
     }
 
-
     return (
         <div>
             <label>

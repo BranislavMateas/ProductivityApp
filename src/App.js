@@ -33,12 +33,17 @@ function App() {
     todoContains.current.value = null;
   }
 
+  function handleCompleteTodos(){
+    const uncompleted = todosList.filter(exactTodo => !exactTodo.complete)
+    setTodos(uncompleted)
+  }
+
   return (
     <>
-      <TodoList todos={todosList} toggleTodo={toggleTodo}/> 
+      <TodoList todos={todosList} toggleTodo={toggleTodo} /> 
       <input ref={todoContains} type="text"></input>
       <button onClick={handleAddTodo}>Add todo</button>
-      <button>Clear completed to do-s</button>
+      <button onClick={handleCompleteTodos}>Clear completed to do-s</button>
       <div>{todosList.filter(exactTodo => !exactTodo.complete).length} left to do</div>
     </>
   );
