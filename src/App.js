@@ -1,8 +1,11 @@
 import React, { useState, useRef, useEffect } from "react";
 import TodoList from "./TodoList";
 import {v4 as uuidv4} from 'uuid';
+import "./myStyles.css"
 
 const LOCAL_STORAGE_KEY = "todoApp.todos"
+var adderer = document.getElementById("adder")
+
 
 function App() {
   const [todosList, setTodos] = useState([]); // useState vracia array(2) - object destructuring - jedna polozka aktuálny stav, druhá bude pre funkciu, ktorá tento stav updatuje
@@ -37,14 +40,19 @@ function App() {
     const uncompleted = todosList.filter(exactTodo => !exactTodo.complete)
     setTodos(uncompleted)
   }
+  
 
   return (
     <>
-      <TodoList todos={todosList} toggleTodo={toggleTodo} /> 
-      <input ref={todoContains} type="text"></input>
-      <button onClick={handleAddTodo}>Add todo</button>
-      <button onClick={handleCompleteTodos}>Clear completed to do-s</button>
-      <div>{todosList.filter(exactTodo => !exactTodo.complete).length} left to do</div>
+      <div className="blok">
+        <TodoList todos={todosList} toggleTodo={toggleTodo} /> 
+        <div className="bottomThings">
+          <input className="bar" onKeyPress={(e) => e.key === 'Enter' && adderer.click()} ref={todoContains} type="text"></input>
+          <button id="adder" onClick={handleAddTodo}>Add todo</button>
+        </div>
+        <button onClick={handleCompleteTodos}>Clear completed to do-s</button>
+        <div>{todosList.filter(exactTodo => !exactTodo.complete).length} left to do</div>
+      </div>
     </>
   );
 }

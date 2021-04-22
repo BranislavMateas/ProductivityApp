@@ -7,10 +7,9 @@ export default function Todo({exactTodo, toggleTodo}) {
 
     return (
         <div>
-            <label>
-                <input type="checkbox" checked={exactTodo.complete} onChange={hadleTodoClick}></input>
-                {exactTodo.name}
-            </label>
+            <label><input type="checkbox" checked={exactTodo.complete} onChange={hadleTodoClick}></input>
+            {exactTodo.name}</label>
+            
         </div>
     )
 }
