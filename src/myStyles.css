@@ -1,34 +1,37 @@
+/* FONT */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
+
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    background-color: #e1f7e7;
-    overflow: hidden;
+body {
+  background-color: #fff;
+  overflow-x: hidden;
 }
 
-.blok{
-    min-height: 70vh;
-    width: 40vw;
-    background-color: #789cce;
-    margin: 0 auto;
-    border-radius: 100px;
-    margin-top: 5vh;
-    
+#date{
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  margin-top: 10px;
 }
 
-.bar{
-    width: 460px;
-    position: absolute;
-    bottom: 270px;
-    margin-left: 100px;
-    height: 35px;
+
+
+.blok {
+  margin: 50px auto;
+  border: 1px solid black;
+  height: auto;
+  border-radius: 5px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
 }
 
-#adder {
-    position: absolute;
-    bottom: 270px;
-    height: 35px;
-    margin-left: 575px;
+.item {
+  border: 1px solid black;
+  padding: 50px;
+  margin: 10px 50px;
+  font-size: 24px;
 }

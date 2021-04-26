@@ -1,15 +1,22 @@
-import React from 'react'
+import React from "react";
+import "./myStyles.css";
 
-export default function Todo({exactTodo, toggleTodo}) {
-    function hadleTodoClick() {
-        toggleTodo(exactTodo.id)
-    }
+export default function Todo({ exactTodo, toggleTodo }) {
+  function hadleTodoClick() {
+    toggleTodo(exactTodo.id);
+  }
 
-    return (
-        <div>
-            <label><input type="checkbox" checked={exactTodo.complete} onChange={hadleTodoClick}></input>
-            {exactTodo.name}</label>
-            
-        </div>
-    )
+  return (
+    <div className="item">
+      <label>
+        <input
+          type="checkbox"
+          className="confirmation"
+          checked={exactTodo.complete}
+          onChange={hadleTodoClick}
+        ></input>
+        {exactTodo.name}
+      </label>
+    </div>
+  );
 }
