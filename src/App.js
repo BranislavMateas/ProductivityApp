@@ -35,6 +35,7 @@ switch (currDay){
 }
 var currDate = currDay + ", " + initialDate.getDate() + "." + (initialDate.getMonth()+1) + "." + initialDate.getFullYear()
 
+
 function App() {
   const [todosList, setTodos] = useState([]); // useState vracia array(2) - object destructuring - jedna polozka aktuálny stav, druhá bude pre funkciu, ktorá tento stav updatuje
   const todoContains = useRef();
@@ -66,19 +67,21 @@ function App() {
     todoContains.current.value = null;
   }
 
-  function handleCompleteTodos() {
-    const uncompleted = todosList.filter((exactTodo) => !exactTodo.complete);
-    setTodos(uncompleted);
+  function handleCompleteTodos(e) {
+    window.confirm("Are u sure?");
+    setTodos(() => {
+      return todosList.filter((exactTodo) => !exactTodo.complete)
+    });
   }
   
   var adderer = document.getElementById("adder");
   
   return (
-     
      <>
       <div className="blok">
         <h1 id="date">{currDate}</h1>
-        <TodoList todos={todosList} toggleTodo={toggleTodo} />
+        <h3 id="remaining">Ostávajú: {todosList.filter((exactTodo) => !exactTodo.complete).length} tasky</h3>
+        <TodoList todos={todosList} toggleTodo={toggleTodo} handleCompleteTodos={handleCompleteTodos} />
         <input className="bar" onKeyPress={(e) => e.key === "Enter" && adderer.click()} ref={todoContains} type="text"></input>
           
          
@@ -92,8 +95,7 @@ function App() {
          
         <button onClick={handleCompleteTodos}>Clear completed to do-s</button>
         <div>
-          {todosList.filter((exactTodo) => !exactTodo.complete).length} left to
-          do
+          
         </div>
       </div>
     </>

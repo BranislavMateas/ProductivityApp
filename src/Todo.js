@@ -1,9 +1,10 @@
 import React from "react";
 import "./myStyles.css";
 
-export default function Todo({ exactTodo, toggleTodo }) {
+export default function Todo({ exactTodo, toggleTodo, handleCompleteTodos }) {
   function hadleTodoClick() {
     toggleTodo(exactTodo.id);
+    handleCompleteTodos()
   }
 
   return (
