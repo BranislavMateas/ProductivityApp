@@ -9,6 +9,9 @@ const LOCAL_STORAGE_KEY = "todoApp.todos";
 var initialDate = new Date()
 var currDay = initialDate.getDay()
 switch (currDay){
+  case 0:
+    currDay = "Nedeľa"
+    break;
   case 1:
     currDay = "Pondelok"
     break;
@@ -27,9 +30,7 @@ switch (currDay){
   case 6:
     currDay = "Sobota"
     break;
-  case 7:
-    currDay = "Nedeľa"
-    break;
+  
   default:
     break;
 }
@@ -76,28 +77,36 @@ function App() {
   
   var adderer = document.getElementById("adder");
   
+  //format poctu taskov
+  switch(todosList.filter((exactTodo) => !exactTodo.complete).length) {
+    case 1:
+      var tasky="task";
+      break;
+    case 2:
+      tasky="tasky";
+      break;
+    case 3:
+      tasky="tasky";
+      break;
+    case 4:
+      tasky="tasky";
+      break;
+    default:
+      tasky="taskov"
+      break;
+  }
+
   return (
      <>
       <div className="blok">
+
         <h1 id="date">{currDate}</h1>
-        <h3 id="remaining">Ostávajú: {todosList.filter((exactTodo) => !exactTodo.complete).length} tasky</h3>
+        <h3 id="remaining">Ostáva: {todosList.filter((exactTodo) => !exactTodo.complete).length} {tasky}</h3>
         <TodoList todos={todosList} toggleTodo={toggleTodo} handleCompleteTodos={handleCompleteTodos} />
         <input className="bar" onKeyPress={(e) => e.key === "Enter" && adderer.click()} ref={todoContains} type="text"></input>
-          
-         
-          
-      </div>   
-        
-      
-
-      <div className="bottomThings">
         <button id="adder" onClick={handleAddTodo}>Add todo</button>
          
-        <button onClick={handleCompleteTodos}>Clear completed to do-s</button>
-        <div>
-          
-        </div>
-      </div>
+      </div>   
     </>
   );
 }
