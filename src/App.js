@@ -5,39 +5,40 @@ import "./myStyles.css";
 
 const LOCAL_STORAGE_KEY = "todoApp.todos";
 
-// date process
-var initialDate = new Date()
-var currDay = initialDate.getDay()
-switch (currDay){
-  case 0:
-    currDay = "Nedeľa"
-    break;
-  case 1:
-    currDay = "Pondelok"
-    break;
-  case 2:
-    currDay = "Utorok"
-    break;
-  case 3:
-    currDay = "Streda"
-    break;
-  case 4:
-    currDay = "Štvrtok"
-    break;
-  case 5:
-    currDay = "Piatok"
-    break;  
-  case 6:
-    currDay = "Sobota"
-    break;
-  
-  default:
-    break;
-}
-var currDate = currDay + ", " + initialDate.getDate() + "." + (initialDate.getMonth()+1) + "." + initialDate.getFullYear()
-
-
 function App() {
+  // date process
+  var initialDate = new Date()
+  var currDay = initialDate.getDay()
+
+  switch (currDay){
+    case 0:
+      currDay = "Nedeľa"
+      break;
+    case 1:
+      currDay = "Pondelok"
+      break;
+    case 2:
+      currDay = "Utorok"
+      break;
+    case 3:
+      currDay = "Streda"
+      break;
+    case 4:
+      currDay = "Štvrtok"
+      break;
+    case 5:
+      currDay = "Piatok"
+      break;  
+    case 6:
+      currDay = "Sobota"
+      break;
+    
+    default:
+      break;
+  }
+
+  var currDate = currDay + ", " + initialDate.getDate() + "." + (initialDate.getMonth()+1) + "." + initialDate.getFullYear()
+
   const [todosList, setTodos] = useState([]); // useState vracia array(2) - object destructuring - jedna polozka aktuálny stav, druhá bude pre funkciu, ktorá tento stav updatuje
   const todoContains = useRef();
 
