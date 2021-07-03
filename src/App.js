@@ -62,7 +62,7 @@ function App() {
 
   function handleAddTodo(e) {
     const todoName = todoContains.current.value;
-    if (todoName === "") return;
+    if (todoName === "") return alert("Sorry, ale v tvojom TODO tasku ti chýba obsah!");
     setTodos((prevTodos) => {
       return [...prevTodos, { id: uuidv4(), name: todoName, complete: false }];
     });
@@ -70,7 +70,6 @@ function App() {
   }
 
   function handleCompleteTodos(e) {
-    window.confirm("Are u sure?");
     setTodos(() => {
       return todosList.filter((exactTodo) => !exactTodo.complete)
     });
@@ -103,9 +102,13 @@ function App() {
 
         <h1 id="date">{currDate}</h1>
         <h3 id="remaining">Ostáva: {todosList.filter((exactTodo) => !exactTodo.complete).length} {tasky}</h3>
-        <TodoList todos={todosList} toggleTodo={toggleTodo} handleCompleteTodos={handleCompleteTodos} />
+        <ul className="list">
+          <TodoList todos={todosList} toggleTodo={toggleTodo} handleCompleteTodos={handleCompleteTodos} />
+        </ul>
         <input className="bar" onKeyPress={(e) => e.key === "Enter" && adderer.click()} ref={todoContains} type="text"></input>
-        <button id="adder" onClick={handleAddTodo}>Add todo</button>
+        <div id="adder" onClick={handleAddTodo}>
+          <a>Pridaj To-Do</a>
+        </div>
          
       </div>   
     </>

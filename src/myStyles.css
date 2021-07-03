@@ -9,12 +9,18 @@
 
 body {
   font-family: 'Poppins', sans-serif;
-  overflow-x: hidden;
+  overflow: hidden;
   outline-color: #fff;
   box-sizing: border-box;
   min-width: 450px;
   letter-spacing: 0.2px;
   background: linear-gradient(to right top, #65dfc9, #6cdbeb) no-repeat fixed;
+}
+
+@media screen and (max-width: 450px) {
+    body {
+      overflow-x: scroll;
+    }
 }
 
 *, *::before, *::after {
@@ -42,8 +48,8 @@ body {
   z-index: 2;
   backdrop-filter: blur(2rem);
   margin: 50px auto;
-  padding-top: 32px;
-  height: auto;
+  padding-top: 1vh;
+  height: 90vh;
   border-radius: 2rem;
   width: 50%;
   display: flex;
@@ -53,7 +59,7 @@ body {
 .item {
   padding: 50px;
   margin: 10px 50px;
-  font-size: 24px;
+  font-size: 1.25em;
   border-radius: 2rem;
   background: linear-gradient(
     to left top,
@@ -68,5 +74,28 @@ body {
   text-align: center;
   color: #5B83A6;
   font-size: 20px;
-  margin-bottom: 48px;
+  margin-bottom: 36px;
+}
+
+#adder {
+  text-align: center;
+  padding: 16px 50px;
+  margin: 10px 50px;
+  margin-top: 32px;
+  font-size: 1.25em;
+  border-radius: 2rem;
+  background: #101229;
+  color: #fff;
+}
+
+#adder:hover {
+  cursor: pointer;
+}
+
+.confirmation {
+  margin-right: 12px !important;
+}
+
+.list {
+  overflow-y: scroll;
 }
