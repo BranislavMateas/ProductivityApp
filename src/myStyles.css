@@ -106,9 +106,17 @@ body {
 .list {
     overflow-y: scroll;
     min-height: 60vh;
+    overflow-x: hidden;
 }
 
 /* TASK ITEM */
+.task {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .item {
     border-radius: 2rem;
     background: linear-gradient(
@@ -118,8 +126,9 @@ body {
     );
     display: flex;
     flex-direction: row;
-    margin: 0 16px;
+    margin: 0 24px;
     margin-bottom: 16px;
+    width: inherit;
 }
 
 .leftSide {
@@ -129,9 +138,7 @@ body {
 }
 
 .rightSide {
-    padding-left: 24px;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding: 16px 24px;
 }
 
 .rightSide h3 {
@@ -144,4 +151,10 @@ body {
 
 .confirmation {
     align-items: center;
+}
+
+.sorting {
+    display: flex;
+    flex-direction: column;
+    margin-right: 24px;
 }
