@@ -98,6 +98,12 @@ function App() {
         todoContainsDes.current.value = null;
     }
 
+    function orderChange(newOrder) {
+        setTodos(() => {
+            return [...newOrder];
+        });
+    }
+
     function handleCompleteTodos(e) {
         setTodos(() => {
             return todosList.filter((exactTodo) => !exactTodo.complete);
@@ -141,6 +147,7 @@ function App() {
                         todos={todosList}
                         toggleTodo={toggleTodo}
                         handleCompleteTodos={handleCompleteTodos}
+                        orderChange={orderChange}
                     />
                 </ul>
                 <input
