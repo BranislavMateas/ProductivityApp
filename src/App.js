@@ -82,7 +82,7 @@ function App() {
         const todoDescr = todoContainsDes.current.value;
 
         if (todoName === "")
-            return alert("Sorry, ale v tvojom TODO tasku ti chýba obsah!");
+            return alert("Sorry, ale v tvojom TODO tasku ti chýba nadpis!");
         setTodos((prevTodos) => {
             return [
                 ...prevTodos,
@@ -150,29 +150,51 @@ function App() {
                         orderChange={orderChange}
                     />
                 </ul>
-                <input
-                    className="bar"
-                    onKeyPress={(e) => e.key === "Enter" && adderer.click()}
-                    ref={todoContains}
-                    type="text"
-                ></input>
-                <input
-                    className="bar"
-                    onKeyPress={(e) => e.key === "Enter" && adderer.click()}
-                    ref={todoContainsDes}
-                    type="text"
-                ></input>
-                <div id="adder" onClick={handleAddTodo}>
-                    <a>
-                        <h2>Pridaj To-Do</h2>
-                    </a>
+                <div className="controls">
+                    <div className="leftControls">
+                        <h3>Name:</h3>
+                        <input
+                            className="bar"
+                            onKeyPress={(e) =>
+                                e.key === "Enter" && adderer.click()
+                            }
+                            ref={todoContains}
+                            type="text"
+                        ></input>
+
+                        <h3>Description:</h3>
+                        <input
+                            className="bar"
+                            onKeyPress={(e) =>
+                                e.key === "Enter" && adderer.click()
+                            }
+                            ref={todoContainsDes}
+                            type="text"
+                        ></input>
+                    </div>
+
+                    <div className="rightControls">
+                        <div>
+                            <div className="datePicking">
+                                <input
+                                    type="checkbox"
+                                    className="confirmation"
+                                ></input>
+                                <h3>Till:</h3>
+                            </div>
+                            <DatePicker
+                                className="piker"
+                                onChange={onChange}
+                                value={value}
+                            />
+                        </div>
+                        <div id="adder" onClick={handleAddTodo}>
+                            <a>
+                                <h2>Pridaj To-Do</h2>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-                <DatePicker
-                    className="piker"
-                    onChange={onChange}
-                    value={value}
-                />
-                <h1>{value.getDate()}</h1>
             </div>
         </>
     );
