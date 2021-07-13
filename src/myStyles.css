@@ -95,6 +95,7 @@ body {
 .list {
     overflow-y: scroll;
     overflow-x: hidden;
+    min-height: 55vh;
 }
 
 /* TASK ITEM */

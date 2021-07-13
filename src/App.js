@@ -15,6 +15,10 @@ function App() {
     // date picker
     const [value, onChange] = useState(new Date());
 
+    // date picker - checkbox
+    const [checked, setChecked] = useState(false);
+    const handleClick = () => setChecked(!checked);
+
     // date process
     var initialDate = new Date();
     var currDay = initialDate.getDay();
@@ -80,6 +84,7 @@ function App() {
     function handleAddTodo(e) {
         const todoName = todoContains.current.value;
         const todoDescr = todoContainsDes.current.value;
+        const wasChecked = checked;
 
         if (todoName === "")
             return alert("Sorry, ale v tvojom TODO tasku ti chýba nadpis!");
@@ -91,9 +96,22 @@ function App() {
                     name: todoName,
                     complete: false,
                     descr: todoDescr,
+                    dateYes: wasChecked,
+                    date:
+                        value.getDate() +
+                        "." +
+                        (value.getMonth() + 1) +
+                        "." +
+                        value.getFullYear(),
+                    remaining:
+                        Math.floor(
+                            (new Date(value).getTime() - new Date().getTime()) /
+                                (1000 * 60 * 60 * 24)
+                        ) + 1,
                 },
             ];
         });
+        if (checked) setChecked(!checked);
         todoContains.current.value = null;
         todoContainsDes.current.value = null;
     }
@@ -179,6 +197,8 @@ function App() {
                                 <input
                                     type="checkbox"
                                     className="confirmation"
+                                    checked={checked}
+                                    onClick={handleClick}
                                 ></input>
                                 <h3>Till:</h3>
                             </div>

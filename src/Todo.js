@@ -13,8 +13,6 @@ export default function Todo({
     todos,
     orderChange,
 }) {
-    function remainingDays() {}
-
     function handleOrderHigher() {
         var position = todos.indexOf(exactTodo);
         var higher = todos[position - 1];
@@ -59,9 +57,16 @@ export default function Todo({
 
                     <div className="rightSide">
                         <h3>{exactTodo.name}</h3>
-                        <h5>
-                            {exactTodo.date} | do {remainingDays}
-                        </h5>
+                        {exactTodo.dateYes === true && (
+                            <h5>
+                                {exactTodo.date} |{" "}
+                                {exactTodo.remaining < 0
+                                    ? "Zameškaných dní: " +
+                                      Math.abs(exactTodo.remaining)
+                                    : "Ostávajúcich dní: " +
+                                      exactTodo.remaining}
+                            </h5>
+                        )}
                         <h4>{exactTodo.descr}</h4>
                     </div>
                 </div>
