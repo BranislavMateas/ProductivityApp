@@ -59,7 +59,7 @@ export default function Todo({
                         <h3>{exactTodo.name}</h3>
                         {exactTodo.dateYes === true && (
                             <h5>
-                                {exactTodo.date} |{" "}
+                                do {exactTodo.date} |{" "}
                                 {exactTodo.remaining < 0
                                     ? "Zameškaných dní: " +
                                       Math.abs(exactTodo.remaining)

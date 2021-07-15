@@ -220,3 +220,32 @@ body {
 .react-date-picker__wrapper {
     border: none !important;
 }
+
+.react-calendar {
+    border-radius: 2rem;
+    border: none;
+    padding: 10px;
+    background: linear-gradient(
+        to right bottom,
+        rgba(255, 255, 255, 1),
+        rgba(255, 255, 255, 0.7)
+    );
+    font-family: "Poppins", sans-serif;
+}
+
+.react-calendar button:focus,
+.react-calendar button:target,
+.react-calendar button:focus-within,
+.react-calendar button:focus-visible,
+.react-calendar button:hover,
+.react-calendar button:active,
+.react-calendar button:visited,
+.react-calendar__tile--active,
+.react-calendar__tile--now {
+    border-radius: 50px !important;
+}
+
+.react-calendar__tile--active,
+.react-calendar__tile--active:hover {
+    background-color: #5b83a6 !important;
+}
