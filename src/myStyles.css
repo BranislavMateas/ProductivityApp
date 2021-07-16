@@ -36,13 +36,24 @@ body {
     outline-color: #fff;
     box-sizing: border-box;
     min-width: 450px;
+    min-height: 550px;
     letter-spacing: 0.2px;
     background: linear-gradient(to right top, #65dfc9, #6cdbeb) no-repeat fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 @media screen and (max-width: 450px) {
     body {
         overflow-x: scroll;
+    }
+}
+
+@media screen and (max-height: 550px) {
+    body {
+        overflow-y: scroll;
     }
 }
 
@@ -71,13 +82,18 @@ body {
     border-radius: 2rem;
     z-index: 2;
     backdrop-filter: blur(2rem);
-    margin: 50px auto;
-    padding-top: 1vh;
+    min-height: 520px;
     height: 90vh;
     border-radius: 2rem;
-    width: 50%;
+    width: 750px;
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+
+.list {
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #remaining {
@@ -90,12 +106,6 @@ body {
 
 #adder:hover {
     cursor: pointer;
-}
-
-.list {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    min-height: 55vh;
 }
 
 /* TASK ITEM */
@@ -154,6 +164,7 @@ body {
     width: 100%;
     display: flex;
     border-top: 2px solid #5b83a6;
+    margin-top: auto;
 }
 
 .bar {
@@ -248,4 +259,46 @@ body {
 .react-calendar__tile--active,
 .react-calendar__tile--active:hover {
     background-color: #5b83a6 !important;
+}
+
+.react-date-picker__button {
+    padding-right: 0;
+}
+
+/* RESPONSIVITY */
+@media screen and (max-width: 800px) {
+    .blok {
+        width: 95vw;
+        height: 95vh;
+    }
+
+    .list {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .rightControls {
+        width: 100%;
+        margin-left: 0px;
+    }
+
+    .leftControls {
+        width: 100%;
+        padding-right: 0px;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .list {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
+    .blok {
+        width: 400px;
+    }
 }

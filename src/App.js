@@ -86,8 +86,13 @@ function App() {
         const todoDescr = todoContainsDes.current.value;
         const wasChecked = checked;
 
-        if (todoName === "")
-            return alert("Sorry, ale v tvojom TODO tasku ti chýba nadpis!");
+        if (todoName.replace(/\s+/g, "") === "") {
+            todoContains.current.value = null;
+            return alert(
+                "Sorry, ale v tvojom TODO tasku ti chýba poriadny nadpis!"
+            );
+        }
+
         setTodos((prevTodos) => {
             return [
                 ...prevTodos,
@@ -209,9 +214,7 @@ function App() {
                             />
                         </div>
                         <div id="adder" onClick={handleAddTodo}>
-                            <a>
-                                <h2>Pridaj To-Do</h2>
-                            </a>
+                            <h2>Pridaj To-Do</h2>
                         </div>
                     </div>
                 </div>
