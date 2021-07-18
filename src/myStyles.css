@@ -303,6 +303,8 @@ body {
     }
 }
 
+/* ANIMATIONS */
+/* transitionName - fade */
 .fade-enter-active,
 .fade-exit-active {
     transition: all 0.2s;

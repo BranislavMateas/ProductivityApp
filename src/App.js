@@ -5,8 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 import DatePicker from "react-date-picker";
 import Todo from "./Todo";
 // IMPORT OTHER REACT COMPONENTS
-import { TransitionGroup } from "react-transition-group";
-import { CSSTransition } from "react-transition-group";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 //IMPORT CSS
 import "./myStyles.css";
 
@@ -184,6 +183,7 @@ function App() {
                                 toggleTodo={toggleTodo}
                                 handleCompleteTodos={handleCompleteTodos}
                                 orderChange={orderChange}
+                                day={value.getDay()}
                             />
                         </CSSTransition>
                     ))}

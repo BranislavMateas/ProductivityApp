@@ -12,7 +12,35 @@ export default function Todo({
     handleCompleteTodos,
     todos,
     orderChange,
+    day,
 }) {
+    switch (day) {
+        case 0:
+            day = "Ne";
+            break;
+        case 1:
+            day = "Po";
+            break;
+        case 2:
+            day = "Ut";
+            break;
+        case 3:
+            day = "St";
+            break;
+        case 4:
+            day = "Št";
+            break;
+        case 5:
+            day = "Pi";
+            break;
+        case 6:
+            day = "So";
+            break;
+
+        default:
+            break;
+    }
+
     function handleOrderHigher() {
         var position = todos.indexOf(exactTodo);
         var higher = todos[position - 1];
@@ -59,7 +87,7 @@ export default function Todo({
                         <h3>{exactTodo.name}</h3>
                         {exactTodo.dateYes === true && (
                             <h5>
-                                do {exactTodo.date} |{" "}
+                                {day} {exactTodo.date} |{" "}
                                 {exactTodo.remaining < 0
                                     ? "Zameškaných dní: " +
                                       Math.abs(exactTodo.remaining)
