@@ -84,10 +84,29 @@ function App() {
         setTodos(newTodos);
     }
 
+    function returnFullDate() {
+        if (value.getDate() === null) {
+            return "--.--.----";
+        }
+        return (
+            value.getDate() +
+            "." +
+            (value.getMonth() + 1) +
+            "." +
+            value.getFullYear()
+        );
+    }
+
     function handleAddTodo(e) {
         const todoName = todoContains.current.value;
         const todoDescr = todoContainsDes.current.value;
         const wasChecked = checked;
+
+        if (wasChecked === true) {
+            if (value === null) {
+                return alert("Sorry, ale musíš zvoliť konkrétny dátum!");
+            }
+        }
 
         if (todoName.replace(/\s+/g, "") === "") {
             todoContains.current.value = null;
@@ -105,12 +124,7 @@ function App() {
                     complete: false,
                     descr: todoDescr,
                     dateYes: wasChecked,
-                    date:
-                        value.getDate() +
-                        "." +
-                        (value.getMonth() + 1) +
-                        "." +
-                        value.getFullYear(),
+                    date: returnFullDate(),
                     remaining:
                         Math.floor(
                             (new Date(value).getTime() - new Date().getTime()) /
@@ -129,6 +143,13 @@ function App() {
             return [...newOrder];
         });
         console.log(todosList);
+    }
+
+    function getMeDay() {
+        if (value === null) {
+            return 69;
+        }
+        return value.getDay();
     }
 
     function handleCompleteTodos(e) {
@@ -183,7 +204,7 @@ function App() {
                                 toggleTodo={toggleTodo}
                                 handleCompleteTodos={handleCompleteTodos}
                                 orderChange={orderChange}
-                                day={value.getDay()}
+                                day={getMeDay()}
                             />
                         </CSSTransition>
                     ))}

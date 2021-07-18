@@ -14,31 +14,41 @@ export default function Todo({
     orderChange,
     day,
 }) {
-    switch (day) {
-        case 0:
-            day = "Ne";
-            break;
-        case 1:
-            day = "Po";
-            break;
-        case 2:
-            day = "Ut";
-            break;
-        case 3:
-            day = "St";
-            break;
-        case 4:
-            day = "Št";
-            break;
-        case 5:
-            day = "Pi";
-            break;
-        case 6:
-            day = "So";
-            break;
+    function daySwitcher() {
+        console.log(day);
+        let den;
+        switch (day) {
+            case 0:
+                den = "Ne";
+                break;
+            case 1:
+                den = "Po";
+                break;
+            case 2:
+                den = "Ut";
+                break;
+            case 3:
+                den = "St";
+                break;
+            case 4:
+                den = "Št";
+                break;
+            case 5:
+                den = "Pi";
+                break;
+            case 6:
+                den = "So";
+                break;
 
-        default:
-            break;
+            case 69:
+                den = "";
+                break;
+
+            default:
+                break;
+        }
+
+        return den;
     }
 
     function handleOrderHigher() {
@@ -87,7 +97,7 @@ export default function Todo({
                         <h3>{exactTodo.name}</h3>
                         {exactTodo.dateYes === true && (
                             <h5>
-                                {day} {exactTodo.date} |{" "}
+                                {daySwitcher()} {exactTodo.date} |{" "}
                                 {exactTodo.remaining < 0
                                     ? "Zameškaných dní: " +
                                       Math.abs(exactTodo.remaining)
