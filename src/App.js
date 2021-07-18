@@ -3,8 +3,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import DatePicker from "react-date-picker";
+import Todo from "./Todo";
 // IMPORT OTHER REACT COMPONENTS
-import TodoList from "./TodoList";
+import { TransitionGroup } from "react-transition-group";
+import { CSSTransition } from "react-transition-group";
 //IMPORT CSS
 import "./myStyles.css";
 
@@ -17,7 +19,9 @@ function App() {
 
     // date picker - checkbox
     const [checked, setChecked] = useState(false);
-    const handleClick = () => setChecked(!checked);
+    const handleClick = () => {
+        setChecked(!checked);
+    };
 
     // date process
     var initialDate = new Date();
@@ -125,6 +129,7 @@ function App() {
         setTodos(() => {
             return [...newOrder];
         });
+        console.log(todosList);
     }
 
     function handleCompleteTodos(e) {
@@ -165,14 +170,24 @@ function App() {
                     }{" "}
                     {tasky}
                 </h2>
-                <ul className="list">
-                    <TodoList
-                        todos={todosList}
-                        toggleTodo={toggleTodo}
-                        handleCompleteTodos={handleCompleteTodos}
-                        orderChange={orderChange}
-                    />
-                </ul>
+                <TransitionGroup component="ul" className="list">
+                    {todosList.map((todo) => (
+                        <CSSTransition
+                            key={todo.id}
+                            timeout={200}
+                            classNames="fade"
+                        >
+                            <Todo
+                                key={todo.id}
+                                exactTodo={todo}
+                                todos={todosList}
+                                toggleTodo={toggleTodo}
+                                handleCompleteTodos={handleCompleteTodos}
+                                orderChange={orderChange}
+                            />
+                        </CSSTransition>
+                    ))}
+                </TransitionGroup>
                 <div className="controls">
                     <div className="leftControls">
                         <h3>Name:</h3>
@@ -197,7 +212,12 @@ function App() {
                     </div>
 
                     <div className="rightControls">
-                        <div>
+                        <div
+                            className="tillPart"
+                            style={{
+                                textDecoration: "2px line-through",
+                            }}
+                        >
                             <div className="datePicking">
                                 <input
                                     type="checkbox"
@@ -205,9 +225,19 @@ function App() {
                                     checked={checked}
                                     onClick={handleClick}
                                 ></input>
-                                <h3>Till:</h3>
+                                <h3
+                                    id="tillText"
+                                    style={{
+                                        opacity: "0.7",
+                                    }}
+                                >
+                                    Till:
+                                </h3>
                             </div>
                             <DatePicker
+                                style={{
+                                    opacity: "0.5",
+                                }}
                                 className="piker"
                                 onChange={onChange}
                                 value={value}
