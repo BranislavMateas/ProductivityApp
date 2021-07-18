@@ -211,7 +211,7 @@ function App() {
                 </TransitionGroup>
                 <div className="controls">
                     <div className="leftControls">
-                        <h3>Name:</h3>
+                        <h3>Názov:</h3>
                         <input
                             className="bar"
                             onKeyPress={(e) =>
@@ -221,7 +221,7 @@ function App() {
                             type="text"
                         ></input>
 
-                        <h3>Description:</h3>
+                        <h3>Popis:</h3>
                         <input
                             className="bar"
                             onKeyPress={(e) =>
@@ -252,7 +252,7 @@ function App() {
                                         opacity: "0.7",
                                     }}
                                 >
-                                    Till:
+                                    Termín do:
                                 </h3>
                             </div>
                             <DatePicker
