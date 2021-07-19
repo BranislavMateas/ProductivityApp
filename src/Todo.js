@@ -80,6 +80,16 @@ export default function Todo({
         handleCompleteTodos();
     }
 
+    function remainingDays() {
+        if (exactTodo.remaining < 0) {
+            return "Zameškaných dní: " + Math.abs(exactTodo.remaining);
+        } else if (exactTodo.remaining > 0) {
+            return "Ostávajúcich dní: " + exactTodo.remaining;
+        } else {
+            return "Dneska deadline!";
+        }
+    }
+
     return (
         <>
             <div className="task">
@@ -98,11 +108,7 @@ export default function Todo({
                         {exactTodo.dateYes === true && (
                             <h5>
                                 {daySwitcher()} {exactTodo.date} |{" "}
-                                {exactTodo.remaining < 0
-                                    ? "Zameškaných dní: " +
-                                      Math.abs(exactTodo.remaining)
-                                    : "Ostávajúcich dní: " +
-                                      exactTodo.remaining}
+                                {remainingDays()}
                             </h5>
                         )}
                         <h4>{exactTodo.descr}</h4>
