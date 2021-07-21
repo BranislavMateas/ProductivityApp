@@ -160,36 +160,41 @@ function App() {
 
     var adderer = document.getElementById("adder");
     //format poctu taskov
-    switch (todosList.filter((exactTodo) => !exactTodo.complete).length) {
-        case 1:
-            var tasky = "task";
-            break;
-        case 2:
-            tasky = "tasky";
-            break;
-        case 3:
-            tasky = "tasky";
-            break;
-        case 4:
-            tasky = "tasky";
-            break;
-        default:
-            tasky = "taskov";
-            break;
+
+    function remainingTasksMsg() {
+        var hlaska = "";
+        switch (todosList.filter((exactTodo) => !exactTodo.complete).length) {
+            case 0:
+                hlaska = "Neostal ti žiaden task. Well played! :)";
+                break;
+            case 1:
+                hlaska = "Ostáva ti už len " + 1 + " task";
+                break;
+            case 2:
+                hlaska = "Zostávajú ti ešte " + 2 + " tasky";
+                break;
+            case 3:
+                hlaska = "Zostávajú ti ešte " + 3 + " tasky";
+                break;
+            case 4:
+                hlaska = "Zostávajú ti ešte " + 4 + " tasky";
+                break;
+            default:
+                let pocet = todosList.filter(
+                    (exactTodo) => !exactTodo.complete
+                ).length;
+                hlaska = "Ostáva ti ešte " + pocet + " taskov";
+                break;
+        }
+
+        return hlaska;
     }
 
     return (
         <>
             <div className="blok">
                 <h1 id="date">{currDate}</h1>
-                <h2 id="remaining">
-                    Ostáva:{" "}
-                    {
-                        todosList.filter((exactTodo) => !exactTodo.complete)
-                            .length
-                    }{" "}
-                    {tasky}
-                </h2>
+                <h2 id="remaining">{remainingTasksMsg()}</h2>
                 <TransitionGroup component="ul" className="list">
                     {todosList.map((todo) => (
                         <CSSTransition
