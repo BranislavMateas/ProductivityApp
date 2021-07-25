@@ -116,10 +116,12 @@ export default function Todo({
                 </div>
                 <div className="sorting">
                     <FontAwesomeIcon
+                        id="up"
                         icon={faChevronUp}
                         onClick={handleOrderHigher}
                     />
                     <FontAwesomeIcon
+                        id="down"
                         icon={faChevronDown}
                         onClick={handleOrderLower}
                     />

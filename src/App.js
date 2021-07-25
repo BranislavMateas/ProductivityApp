@@ -142,7 +142,6 @@ function App() {
         setTodos(() => {
             return [...newOrder];
         });
-        console.log(todosList);
     }
 
     function getMeDay() {
@@ -199,7 +198,7 @@ function App() {
                     {todosList.map((todo) => (
                         <CSSTransition
                             key={todo.id}
-                            timeout={200}
+                            timeout={300}
                             classNames="fade"
                         >
                             <Todo
