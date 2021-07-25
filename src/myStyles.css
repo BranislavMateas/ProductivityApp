@@ -104,10 +104,6 @@ body {
     margin-bottom: 24px;
 }
 
-#adder:hover {
-    cursor: pointer;
-}
-
 /* TASK ITEM */
 .task {
     width: 100%;
@@ -209,7 +205,17 @@ body {
     border-radius: 2rem;
     background: #101229;
     color: #fff;
-    padding: 8px 0;
+    padding: 5px 0;
+    border: 3px solid #101229;
+    transition: 0.3s;
+}
+
+#adder:hover {
+    cursor: pointer;
+    border: 3px solid #101229;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #101229;
+    transition: 0.3s;
 }
 
 .datePicking {
@@ -332,5 +338,10 @@ body {
 #up:hover,
 #down:hover {
     transform: scale(1.15, 1.15);
+    transition: 0.2s ease;
+}
+
+#up,
+#down {
     transition: 0.2s ease;
 }
